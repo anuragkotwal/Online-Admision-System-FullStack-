@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+        <link rel="shortcut icon" type="image/jpg" href="/img/logo.jpg">
+        <title>Admission form</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="/js/branch.js"></script>
+        <script src="/js/Validation.js"></script>
+    </head>
+<body>
+    <link rel="stylesheet" href="/CSS/AdmissionForm.css">
+<div class="signup-form">
+    <form method="POST" action="/admissionform" class="needs-validation" novalidate>
+        <% if(message) { %>
+            <div style="text-align: center" class="alert alert-<%- message.type %>">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong><%- message.intro %></strong> <%- message.message %>
+            </div>
+        <% } %>
+        <div class="form-group mb-3">
+            <a href="/dashboard"><i class="fa fa-arrow-left "></i> Back to dashboard</a>
+        </div>
+		<h2>Admission Form</h2>
+        <div class="form-group">
+			<div class="row">
+				<div class="col">
+                    <input type="text" class="form-control" name="Firstname" placeholder="First Name" required="required">
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="Middlename" placeholder="Middle Name">
+                </div>
+				<div class="col">
+                    <input type="text" class="form-control" name="Lastname" placeholder="Last Name" required="required">
+                    <div class="invalid-feedback"></div>
+                </div>
+			</div>        	
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                <div class="invalid-feedback">
+                    Please choose a valid email
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" name="mobileno" placeholder="Phone number" required
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            maxlength = "10">
+            <div class="valid-feedback"></div>
+        </div>
+		<div class="form-group">
+            <input type="text" class="form-control" name="Fathername" placeholder="Father Name" required>
+            <div class="valid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="Mothername" placeholder="Mother Name" required>
+            <div class="valid-feedback"></div>
+        </div>
+        <div class="form-group mb-4">
+            <input type="text" class="form-control" name="DOB" placeholder="Date of Birth" onfocus="(this.type='date')" required>
+            <div class="valid-feedback"></div>
+        </div>
+        <div class="form-group mb-3">
+                <select class="custom-select" name="Gender" required>
+                        <option selected disabled value="">Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                </select>
+                <div class="invalid-feedback">Please select gender</div>
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" name="AadharNo" placeholder="Aadhaar number" required 
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            maxlength = "12">
+            <div class="valid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" name="class10per" placeholder="Class 10 percentage" step="0.01" required>
+            <div class="invalid-feedback">Please enter class 10th percentage</div>
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" name="class12per" placeholder="Class 12 percentage" step="0.01" required>
+            <div class="invalid-feedback">Please enter class 12th percentage</div>
+        </div>
+        <div class="form-group">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="class10marksheet" id="class10marksheet" onchange="return fileValidation1()" required>
+                <label class="custom-file-label" for="class10marksheet">Choose class 10th Marksheet</label>
+                <small class="text-muted">
+                    .pdf file only
+                  </small>
+            </div> 
+            <div class="invalid-feedback">Please select a file</div>
+        </div>
+        <div class="form-group">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="class12marksheet" id="class12marksheet" onchange="return fileValidation2()" required>
+                <label class="custom-file-label" for="class12marksheet">Choose class 12th Marksheet</label>
+                <small class="text-muted">
+                    .pdf file only
+                </small>
+            </div>
+            <div class="invalid-feedback">Please select a file</div>
+        </div>
+        <div class="form-group">
+            <select class="custom-select" name="course" id="course" required>
+                <option selected disabled value="">Choose a course</option>
+                <option value="Bachelor of Technology">Bachelor of Technology (B.tech)</option>
+                <option value="Bachelor of Business Administration">Bachelor of Business Administration (BBA)</option>
+                <option value="Bachelor of Commerce">Bachelor of Commerce (B.Com.)</option>
+                <option value="Bachelor of Science">Bachelor of Science (B.Sc.)</option>
+            </select>
+            <div class="invalid-feedback">Please select a course</div>
+        </div>
+        <div class="form-group">
+            <select class="custom-select" name="branch" id="branch" required>
+                <option selected disabled value="">Choose a branch</option>
+            </select>
+            <div class="invalid-feedback">Please select a branch</div>
+        </div>
+		<div class="form-group" id="btn1">
+            <button class="btn btn-block btn-primary" id="admissionform" type="submit">Submit</button>
+        </div>
+        <script>
+            $(".custom-file-input").on("change", function() {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+            </script>
+            <script>
+                function fileValidation1(){
+                    const fileInput = document.getElementById('class10marksheet');
+                    const filePath = fileInput.value;
+                    const pdfOnly = /(\.pdf)$/i;
+                    if(!pdfOnly.exec(filePath)){
+                            alert("PDF file only");
+                            fileInput.value= '';
+                            return false;
+                    }
+                }
+            </script>
+            <script>
+                function fileValidation2(){
+                    const fileInput = document.getElementById('class12marksheet');
+                    const filePath = fileInput.value;
+                    const pdfOnly = /(\.pdf)$/i;
+                    if(!pdfOnly.exec(filePath)){
+                            alert("PDF file only");
+                            fileInput.value= '';
+                            return false;
+                    }
+                }
+            </script>
+      </form>
+</div>
+</body>
+</html>

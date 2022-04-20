@@ -1,0 +1,48 @@
+body {
+	background-image: url(../img/geu1.png);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	font-family: 'Roboto', sans-serif;
+}
+
+.row form a {
+    color: #820808;
+    text-decoration: none;
+}
+.row form a:hover {
+	text-decoration: underline;
+}  
+
+.row h5 {
+	color: #636363;
+	margin: 0 0 10px;
+	position: relative;
+	text-align: center;
+  font-weight: bold;
+}
+.row h5:before, .row h5:after {
+	content: "";
+	height: 2px;
+	width: 30%;
+	background: #969fa4;
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+}	
+.row h5:before {
+	left: 0;
+}
+.row h5:after {
+	right: 0;
+}
+.btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+  }
